@@ -3,7 +3,7 @@
     package="app.brkline.androiddisplayjokelib">
 
     <application>
-        <activity android:name=".DisplayJokeActivity"></activity>
+        <activity android:name=".DisplayJokeActivity" />
     </application>
 
 </manifest>

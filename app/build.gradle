@@ -38,7 +38,7 @@ android {
             applicationIdSuffix ".paid"
             // Based on post located here:
             // https://www.journaldev.com/21533/android-build-types-product-flavors
-            manifestPlaceholders = [appLabel: "Build it Bigger"]
+            manifestPlaceholders = [appLabel: "Build it Bigger(Paid)"]
         }
         free {
             dimension 'version'

@@ -1,9 +1,11 @@
 package app.brkline.javajokelib;
 
+
 public class Jokes {
 
+    private static String joke;
     // Joke courtesy of: https://parade.com/940979/kelseypelzer/best-dad-jokes/
     public String getJoke() {
-        return "Two guys walk into a bar.  The third one ducks.";
+        return "5/4 of people admit they're bad at fractions.";
     }
 }
