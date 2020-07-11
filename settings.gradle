@@ -1,0 +1,3 @@
+include ':androidDisplayJokeLib'
+include ':javaJokeLib'
+include ':app', ':backend'
