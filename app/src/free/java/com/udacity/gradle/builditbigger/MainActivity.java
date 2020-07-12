@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button button = findViewById(R.id.tell_joke_btn);
+        // AsyncTask to retrieve the joke from Google Cloud Endpoint
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -53,13 +54,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void tellJoke(View view) {
-        String joke = new Jokes().getJoke();
-        Intent intent = new Intent(this, DisplayJokeActivity.class);
-        intent.putExtra(DisplayJokeActivity.EXTRA_JOKE_DATA, joke);
-        startActivity(intent);
-    }
-
-
 }

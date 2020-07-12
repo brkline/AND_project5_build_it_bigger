@@ -1,7 +1,9 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -12,11 +14,14 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
+import app.brkline.androiddisplayjokelib.DisplayJokeActivity;
+
 // This code is based off of the template we were supposed to modify which is located here:
 // https://github.com/GoogleCloudPlatform/gradle-appengine-templates/tree/77e9910911d5412e5efede5fa681ec105a0f02ad/HelloEndpoints#2-connecting-your-android-app-to-the-backend
 public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
+    private static final String LOG_TAG = EndpointsAsyncTask.class.getSimpleName();
 
     @Override
     protected String doInBackground(Context... contexts) {
@@ -37,12 +42,17 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
         try {
             return myApiService.tellJoke().execute().getJoke();
         } catch (IOException e) {
-            return e.getMessage();
+            Log.e(LOG_TAG,  e.getMessage());
+            return null;
         }
     }
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        super.onPostExecute(result);
+        Intent intent = new Intent(context, DisplayJokeActivity.class);
+        intent.putExtra(DisplayJokeActivity.EXTRA_JOKE_DATA, result);
+        context.startActivity(intent);
+//        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
     }
 }
